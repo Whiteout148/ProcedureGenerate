@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     private const int MaxRoomsCount = 5;
     private const int MinPosition = -45;
     private const int MaxPosition = 45;
+    private const float SpawnedRotation = -90f;
 
     [SerializeField] private float _spawnHeight = 0f;
 
@@ -32,7 +33,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < roomsCount; i++)
         {
             Room spawnedObject = Instantiate(roomType, GetSpawnPosition(), Quaternion.identity);
-            spawnedObject.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
+            spawnedObject.transform.localEulerAngles = new Vector3(SpawnedRotation, 0f, 0f);
             spawnedRooms.Add(spawnedObject);
         }
 
