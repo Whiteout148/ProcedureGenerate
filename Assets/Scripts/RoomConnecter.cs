@@ -40,19 +40,19 @@ public class RoomConnecter : MonoBehaviour
         return false;
     }
 
-    private void SnapRoomToRoom(Room movingRoom, DoorPoint movingDoor, DoorPoint targetDoor)
+    private void SnapRoomToRoom(Room room, DoorPoint door, DoorPoint targetDoor)
     {
-        Transform roomRoot = movingRoom.transform;
+        Transform roomRoot = room.transform;
 
-        Quaternion rotDelta = Quaternion.FromToRotation(movingDoor.transform.forward, - targetDoor.transform.forward);
+        Quaternion rotDelta = Quaternion.FromToRotation(door.transform.forward, - targetDoor.transform.forward);
 
         roomRoot.rotation = rotDelta * roomRoot.rotation;
 
-        Vector3 delta = targetDoor.transform.position - movingDoor.transform.position;
+        Vector3 delta = targetDoor.transform.position - door.transform.position;
 
         roomRoot.position += delta;
 
-        movingDoor.SetBusy();
+        door.SetBusy();
         targetDoor.SetBusy();
     }
 }
